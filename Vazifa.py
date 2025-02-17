@@ -61,17 +61,22 @@
 
 
 
-
-
+  
+"uyga vazifa"
+from uuid import uuid4
 
 class Basket:
     def __init__(self):
+        self.__id  = uuid4
         self.products = []
         self.products2 = []
 
     def add(self, product, price, quantity):
         self.products.append({"product": product, "price": price, "quantity": quantity})
         return f"{product}, {quantity} savatga qo'shildi"
+
+    def get_id(self):
+        return self.__id
 
     def show(self): 
         if not self.products:
@@ -81,12 +86,17 @@ class Basket:
             result += f"- {i['product']}: {i['price']} USD ({i['quantity']} dona)\n"
         return result
 
+    def get_id(self):
+        return self.__id
+
     def calc(self):
         summa = 0
         for i in self.products:
             summa += i["price"] * i["quantity"]
         return f"Umumiy narx: {summa} USD"
 
+    def get_id(self):
+        return self.__id
     def remove(self, product, quantity=1):
         for i in self.products:
             if i["product"] == product:
